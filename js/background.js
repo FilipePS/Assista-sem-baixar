@@ -6,14 +6,27 @@ function addVideoUrl(url) {
     }
 }
 
-// TODO Verificar o Content-Type para ter certeza de que se trata de um vídeo
 function onHeadersReceived(details) {
+    var headerContentDisposition = null
+    var contentType = null
+    
     for (let header of details.responseHeaders) {
-        if (header.name.toLowerCase() === "content-disposition" && header.value.startsWith("attachment")) {
-            header.value = header.value.replace("attachment", "inline")
-            addVideoUrl(details.url)
-            return { responseHeaders: details.responseHeaders }
+        if (headerContentDisposition && contentType) break;
+
+        var headerName = header.name.toLowerCase()
+        if (headerName === "content-disposition") {
+            headerContentDisposition = header
+        } else if (headerName === "content-type") {
+            contentType = header.value.toLowerCase()
         }
+    }
+
+    if (contentType && (contentType === "application/octet-stream" || contentType.startsWith("video"))) {
+        addVideoUrl(details.url)
+        if (headerContentDisposition.value.toLowerCase().startsWith("attachment")) {
+            headerContentDisposition.value = headerContentDisposition.value.replace("attachment", "inline")
+        }
+        return { responseHeaders: details.responseHeaders }
     }
     return {}
 }
