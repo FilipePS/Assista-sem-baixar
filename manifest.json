@@ -3,7 +3,7 @@
     "author": "Filipe PS",
     "name": "Assista sem baixar",
     "description": "Esta extensão para navegador permite assitir video sem baixar com suporte a legendas.",
-    "version": "0.1",
+    "version": "0.2",
     "icons": {
         "32": "icons/icon.png"
     },
