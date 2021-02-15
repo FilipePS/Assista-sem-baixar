@@ -10,7 +10,8 @@
     "permissions": [
         "<all_urls>",
         "webRequest",
-        "webRequestBlocking"
+        "webRequestBlocking",
+        "menus"
     ],
     "browser_action": {
         "default_title": "Assista sem baixar",
@@ -25,9 +26,6 @@
             "js": ["js/content-script.js"],
             "run_at": "document_end"
         }
-    ],
-    "web_accessible_resources": [
-        "js/video_player.js"
     ],
     "background": {
         "page": "background.html"

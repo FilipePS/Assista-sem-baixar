@@ -1,3 +1,6 @@
+// TODO Adicionar um botão no menu de contexto para adicionar legenda em qualquer vídeo
+// TODO Adicionar opção de desativar a extensão em sites especificos
+
 var video_urls = []
 
 function addVideoUrl(url) {
@@ -23,10 +26,10 @@ function onHeadersReceived(details) {
 
     if (contentType && (contentType === "application/octet-stream" || contentType.startsWith("video"))) {
         addVideoUrl(details.url)
-        if (headerContentDisposition.value.toLowerCase().startsWith("attachment")) {
+        if (headerContentDisposition && headerContentDisposition.value.toLowerCase().startsWith("attachment")) {
             headerContentDisposition.value = headerContentDisposition.value.replace("attachment", "inline")
+            return { responseHeaders: details.responseHeaders }
         }
-        return { responseHeaders: details.responseHeaders }
     }
     return {}
 }
@@ -45,3 +48,17 @@ function onMessage(message, sender, sendResponse) {
 }
 
 chrome.runtime.onMessage.addListener(onMessage)
+
+function contextMenusOnClick(info) {
+    chrome.tabs.query({currentWindow: true, active: true}, tabs => {
+        chrome.tabs.sendMessage(tabs[0].id, {action: "add-subtitles", targetElementId: info.targetElementId}, function(){})
+    })
+}
+
+chrome.menus.create({
+    id: "add-subtitles",
+    documentUrlPatterns: ["*://*/*"],
+    title: "Adicionar legenda neste vídeo",
+    contexts: ["video"],
+    onclick: contextMenusOnClick
+})
