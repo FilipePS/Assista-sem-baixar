@@ -1,9 +1,10 @@
 {
     "manifest_version": 2,
+    "default_locale": "en",
     "author": "Filipe PS",
-    "name": "Assista sem baixar",
-    "description": "Esta extensão para navegador permite assitir video sem baixar com suporte a legendas.",
-    "version": "0.2",
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "version": "0.3",
     "icons": {
         "32": "icons/icon.png"
     },
@@ -14,7 +15,7 @@
         "menus"
     ],
     "browser_action": {
-        "default_title": "Assista sem baixar",
+        "default_title": "__MSG_popupTitle__",
         "default_popup": "popup.html",
         "default_icon": {
             "32": "icons/icon.png"

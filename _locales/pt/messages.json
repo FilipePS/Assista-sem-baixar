@@ -1,0 +1,14 @@
+{
+    "extensionName": {
+        "message": "Assistir sem baixar"
+    },
+    "extensionDescription": {
+        "message": "Esta extensão de navegador permite assistir vídeos sem fazer download com suporte a legendas."
+    },
+    "popupTitle": {
+        "message": "Assistir sem baixar"
+    },
+    "contextMenuTitle": {
+        "message": "Adicionar legendas neste vídeo"
+    }
+}

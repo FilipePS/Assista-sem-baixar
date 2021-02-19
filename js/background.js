@@ -1,4 +1,4 @@
-// TODO Adicionar um botão no menu de contexto para adicionar legenda em qualquer vídeo
+
 // TODO Adicionar opção de desativar a extensão em sites especificos
 
 var video_urls = []
@@ -58,7 +58,7 @@ function contextMenusOnClick(info) {
 chrome.menus.create({
     id: "add-subtitles",
     documentUrlPatterns: ["*://*/*"],
-    title: "Adicionar legenda neste vídeo",
+    title: chrome.i18n.getMessage("contextMenuTitle"),
     contexts: ["video"],
     onclick: contextMenusOnClick
 })

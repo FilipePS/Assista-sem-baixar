@@ -1,0 +1,14 @@
+{
+    "extensionName": {
+        "message": "Watch without downloading"
+    },
+    "extensionDescription": {
+        "message": "This browser extension allows you to watch video without downloading with subtitle support."
+    },
+    "popupTitle": {
+        "message": "Watch without downloading"
+    },
+    "contextMenuTitle": {
+        "message": "Add subtitles in this video"
+    }
+}
